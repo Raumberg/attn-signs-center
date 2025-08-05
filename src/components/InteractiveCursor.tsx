@@ -1,0 +1,42 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+interface InteractiveCursorProps {
+  mousePosition: { x: number; y: number };
+  isHovering: boolean;
+}
+
+export default function InteractiveCursor({ mousePosition, isHovering }: InteractiveCursorProps) {
+  return (
+    <>
+      <motion.div
+        className="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50 mix-blend-difference"
+        animate={{
+          x: mousePosition.x - 8,
+          y: mousePosition.y - 8,
+          scale: isHovering ? 2 : 1,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 500,
+          damping: 28,
+        }}
+      />
+      
+      <motion.div
+        className="fixed w-8 h-8 border border-white rounded-full pointer-events-none z-40"
+        animate={{
+          x: mousePosition.x - 16,
+          y: mousePosition.y - 16,
+          scale: isHovering ? 1.5 : 1,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 20,
+        }}
+      />
+    </>
+  );
+} 
