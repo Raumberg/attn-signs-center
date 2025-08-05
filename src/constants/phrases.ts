@@ -1,14 +1,12 @@
 export const attentionPhrases = [
-  "Give me your",
-  "No need for", 
-  "Follow the",
-  "Don't lie,",
-  "Where are your",
-  "Decode the",
-  "Speak volumes,",
-  "Lost in",
-  "Trust your",
-  "Train. Adapt. Repeat.",
-  "Align, Optimize, Deviate,",
+  "GIVE ME YOUR",
+  "NO NEED FOR", 
+  "FOLLOW THE",
+  "DON'T LIE,",
+  "WHERE ARE YOUR",
+  "DECODE THE",
+  "SPEAK VOLUMES,",
+  "LOST IN",
+  "TRUST YOUR",
   "dw/dx"
 ]; 
