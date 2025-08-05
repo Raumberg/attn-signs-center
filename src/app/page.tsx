@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { attentionPhrases } from "@/constants/phrases";
 import { useMouseEffects } from "@/hooks/useMouseEffects";
-import BackgroundAnimation from "@/components/effects/BackgroundAnimation";
+import VideoBackground from "@/components/effects/VideoBackground";
 import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
 import Navigation from "@/components/ui/Navigation";
@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col relative overflow-hidden">
-      <BackgroundAnimation mousePosition={mousePosition} />
+                    <VideoBackground mousePosition={mousePosition} />
       
       <RippleEffect ripples={ripples} />
 
