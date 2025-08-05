@@ -46,7 +46,7 @@ export function useMouseEffects() {
     const rect = element.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const radius = Math.max(rect.width, rect.height) / 2 + 20; // 20px buffer
+    const radius = Math.max(rect.width, rect.height) / 2 + 70; // 50px buffer for stronger effect
     
     setMagneticTarget({ x: centerX, y: centerY, radius });
   };
@@ -66,8 +66,8 @@ export function useMouseEffects() {
     
     if (distance <= magneticTarget.radius) {
       const strength = 1 - (distance / magneticTarget.radius);
-      const magneticX = mousePosition.x + (magneticTarget.x - mousePosition.x) * strength * 0.3;
-      const magneticY = mousePosition.y + (magneticTarget.y - mousePosition.y) * strength * 0.3;
+      const magneticX = mousePosition.x + (magneticTarget.x - mousePosition.x) * strength * 0.95;
+      const magneticY = mousePosition.y + (magneticTarget.y - mousePosition.y) * strength * 0.95;
       return { x: magneticX, y: magneticY };
     }
     
