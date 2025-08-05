@@ -12,7 +12,15 @@ import ScrollIndicator from "@/components/ScrollIndicator";
 
 export default function Home() {
   const [randomPhrase, setRandomPhrase] = useState("");
-  const { mousePosition, isHovering, setIsHovering, ripples } = useMouseEffects();
+  const { 
+    mousePosition, 
+    isHovering, 
+    setIsHovering, 
+    ripples, 
+    setMagneticTargetForElement, 
+    clearMagneticTarget, 
+    getMagneticPosition 
+  } = useMouseEffects();
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * attentionPhrases.length);
@@ -25,12 +33,18 @@ export default function Home() {
       
       <RippleEffect ripples={ripples} />
 
-      <InteractiveCursor mousePosition={mousePosition} isHovering={isHovering} />
+      <InteractiveCursor 
+        mousePosition={mousePosition} 
+        isHovering={isHovering} 
+        magneticPosition={getMagneticPosition()}
+      />
 
       <HeroSection 
         randomPhrase={randomPhrase}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
+        onButtonHover={setMagneticTargetForElement}
+        onButtonLeave={clearMagneticTarget}
       />
 
       <Navigation />

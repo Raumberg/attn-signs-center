@@ -6,9 +6,11 @@ interface HeroSectionProps {
   randomPhrase: string;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  onButtonHover: (element: HTMLElement) => void;
+  onButtonLeave: () => void;
 }
 
-export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave }: HeroSectionProps) {
+export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, onButtonHover, onButtonLeave }: HeroSectionProps) {
   return (
     <motion.section 
       className="flex-1 flex items-center justify-center px-4 relative z-10"
@@ -56,6 +58,8 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave }
             className="px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onMouseEnter={(e) => onButtonHover(e.currentTarget)}
+            onMouseLeave={onButtonLeave}
           >
             View Research
           </motion.button>
@@ -63,6 +67,8 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave }
             className="px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors duration-300 font-medium"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onMouseEnter={(e) => onButtonHover(e.currentTarget)}
+            onMouseLeave={onButtonLeave}
           >
             Read Blog
           </motion.button>

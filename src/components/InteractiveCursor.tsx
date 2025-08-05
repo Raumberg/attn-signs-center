@@ -5,16 +5,17 @@ import { motion } from "framer-motion";
 interface InteractiveCursorProps {
   mousePosition: { x: number; y: number };
   isHovering: boolean;
+  magneticPosition: { x: number; y: number };
 }
 
-export default function InteractiveCursor({ mousePosition, isHovering }: InteractiveCursorProps) {
+export default function InteractiveCursor({ mousePosition, isHovering, magneticPosition }: InteractiveCursorProps) {
   return (
     <>
       <motion.div
         className="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50 mix-blend-difference"
         animate={{
-          x: mousePosition.x - 8,
-          y: mousePosition.y - 8,
+          x: magneticPosition.x - 8,
+          y: magneticPosition.y - 8,
           scale: isHovering ? 2 : 1,
         }}
         transition={{
@@ -27,8 +28,8 @@ export default function InteractiveCursor({ mousePosition, isHovering }: Interac
       <motion.div
         className="fixed w-8 h-8 border border-white rounded-full pointer-events-none z-40"
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
+          x: magneticPosition.x - 16,
+          y: magneticPosition.y - 16,
           scale: isHovering ? 1.5 : 1,
         }}
         transition={{
