@@ -1,6 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { JetBrains_Mono } from "next/font/google";
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 interface HeroSectionProps {
   randomPhrase: string;
@@ -22,7 +28,7 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, 
     >
       <div className="text-center max-w-4xl mx-auto">
         <motion.p 
-          className="text-lg md:text-xl text-gray-400 mb-4 font-mono tracking-wide"
+          className={`text-lg md:text-xl text-gray-400 mb-4 font-mono tracking-wide ${jetbrainsMono.className}`}
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.8 }}
@@ -40,12 +46,12 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, 
         </motion.h1>
         
         <motion.p 
-          className="text-xl md:text-2xl text-gray-300 mb-8 font-mono tracking-wide"
+          className={`text-xl md:text-2xl text-gray-300 mb-8 font-mono tracking-wide ${jetbrainsMono.className}`}
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          Supervise, Reinforce, Align
+          Supervise. Reinforce. Align. Repeat.
         </motion.p>
         
         <motion.div 
@@ -55,7 +61,7 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, 
           transition={{ delay: 0.6, duration: 0.8 }}
         >
           <motion.button 
-            className="px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium"
+            className={`px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium ${jetbrainsMono.className}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onMouseEnter={(e) => onButtonHover(e.currentTarget)}
@@ -64,7 +70,7 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, 
             View Research
           </motion.button>
           <motion.button 
-            className="px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors duration-300 font-medium"
+            className={`px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors duration-300 font-medium ${jetbrainsMono.className}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onMouseEnter={(e) => onButtonHover(e.currentTarget)}

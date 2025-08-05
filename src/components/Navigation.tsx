@@ -1,6 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { JetBrains_Mono } from "next/font/google";
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function Navigation() {
   const navItems = ["About", "Research", "Blog", "Contact"];
@@ -14,7 +20,7 @@ export default function Navigation() {
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <motion.div 
-          className="text-xl font-bold"
+          className={`text-xl font-bold ${jetbrainsMono.className}`}
           whileHover={{ scale: 1.1 }}
         >
           AS
@@ -24,7 +30,7 @@ export default function Navigation() {
             <motion.a
               key={item}
               href="#"
-              className="text-gray-300 hover:text-white transition-colors duration-300"
+              className={`text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.className}`}
               whileHover={{ y: -2 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
