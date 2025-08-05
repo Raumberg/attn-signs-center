@@ -1,18 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface BackgroundAnimationProps {
   mousePosition: { x: number; y: number };
 }
 
 export default function BackgroundAnimation({ mousePosition }: BackgroundAnimationProps) {
+  const { width, height } = useWindowSize();
+  
   return (
     <motion.div 
       className="absolute inset-0 pointer-events-none"
       animate={{
-        x: (mousePosition.x - window.innerWidth / 2) * 0.02,
-        y: (mousePosition.y - window.innerHeight / 2) * 0.02,
+        x: (mousePosition.x - width / 2) * 0.02,
+        y: (mousePosition.y - height / 2) * 0.02,
       }}
       transition={{
         type: "spring",
