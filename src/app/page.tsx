@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 import { attentionPhrases } from "@/constants/phrases";
 import { useMouseEffects } from "@/hooks/useMouseEffects";
-import BackgroundAnimation from "@/components/BackgroundAnimation";
-import InteractiveCursor from "@/components/InteractiveCursor";
-import RippleEffect from "@/components/RippleEffect";
-import Navigation from "@/components/Navigation";
-import HeroSection from "@/components/HeroSection";
-import ScrollIndicator from "@/components/ScrollIndicator";
+import BackgroundAnimation from "@/components/effects/BackgroundAnimation";
+import InteractiveCursor from "@/components/effects/InteractiveCursor";
+import RippleEffect from "@/components/effects/RippleEffect";
+import Navigation from "@/components/ui/Navigation";
+import HeroSection from "@/components/pages/HeroSection";
+import ScrollIndicator from "@/components/ui/ScrollIndicator";
 
 export default function Home() {
   const [randomPhrase, setRandomPhrase] = useState("");

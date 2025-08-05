@@ -29,7 +29,7 @@ export default function Navigation() {
           {navItems.map((item, index) => (
             <motion.a
               key={item}
-              href="#"
+              href={item === "Contact" ? "/contact" : "#"}
               className={`text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.className}`}
               whileHover={{ y: -2 }}
               initial={{ opacity: 0, y: 20 }}
