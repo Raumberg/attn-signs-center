@@ -11,26 +11,30 @@ const jetbrainsMono = JetBrains_Mono({
 const socialLinks = [
   {
     name: "Discord",
-    url: "https://discord.gg/your-server",
-    color: "hover:text-indigo-400",
+    url: "https://discord.com/users/416312981270429696",
+    color: "text-indigo-400",
+    borderColor: "border-indigo-400",
     description: "Join our community"
   },
   {
     name: "GitHub",
-    url: "https://github.com/attention-signs",
-    color: "hover:text-gray-400",
+    url: "https://github.com/Raumberg",
+    color: "text-gray-300",
+    borderColor: "border-gray-300",
     description: "Check out my code"
   },
   {
     name: "Telegram",
-    url: "https://t.me/attention_signs",
-    color: "hover:text-blue-400",
+    url: "https://t.me/raumberg",
+    color: "text-blue-400",
+    borderColor: "border-blue-400",
     description: "Direct messages"
   },
   {
     name: "Email",
-    url: "mailto:attention@signs.dev",
-    color: "hover:text-red-400",
+    url: "mailto:fallturm.bremen@gmail.com",
+    color: "text-red-400",
+    borderColor: "border-red-400",
     description: "Professional inquiries"
   }
 ];
@@ -74,13 +78,28 @@ export default function ContactPage() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group p-6 rounded-lg hover:bg-gray-900 transition-all duration-300 no-underline ${jetbrainsMono.className}`}
-              style={{ textDecoration: 'none' }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
+              className={`group p-6 rounded-lg border border-transparent hover:bg-gray-900/50 no-underline transition-transform duration-10 ${jetbrainsMono.className}`}
+              style={{ 
+                textDecoration: 'none',
+                borderColor: 'transparent'
+              }}
+              whileHover={{ 
+                scale: 0.95, 
+                y: 2,
+                borderColor: link.borderColor === 'border-indigo-400' ? '#818cf8' : 
+                             link.borderColor === 'border-gray-300' ? '#d1d5db' :
+                             link.borderColor === 'border-blue-400' ? '#60a5fa' :
+                             link.borderColor === 'border-red-400' ? '#f87171' : 'transparent'
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+              transition={{ 
+                delay: 0.8 + index * 0.1, 
+                duration: 0.6,
+                type: "spring",
+                stiffness: 300,
+                damping: 20
+              }}
             >
               <div className={`text-xl font-bold mb-2 transition-colors duration-300 ${link.color}`}>
                 {link.name}
@@ -100,12 +119,16 @@ export default function ContactPage() {
         >
           <motion.a
             href="/"
-            className={`inline-block px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}
+            className={`inline-block px-8 py-3 border border-white text-white hover:bg-white hover:text-black font-medium no-underline ${jetbrainsMono.className}`}
             style={{ textDecoration: 'none' }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 0.95, y: 2 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 300,
+              damping: 20
+            }}
           >
-            ← Back to Home
+            ← Home
           </motion.a>
         </motion.div>
       </div>

@@ -10,7 +10,7 @@ export default function Contact() {
   const { mousePosition, isHovering, setIsHovering, getMagneticPosition } = useMouseEffects();
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col relative overflow-hidden">
+    <div className="min-h-screen text-white flex flex-col relative overflow-hidden">
                      <VideoBackground mousePosition={mousePosition} />
       <InteractiveCursor 
         mousePosition={mousePosition} 
