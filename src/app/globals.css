@@ -1,4 +1,8 @@
 @import "tailwindcss";
+/* prevent constant grey selection look inside code blocks */
+.code-block *::selection {
+  background: transparent;
+}
 
 :root {
   --background: #ffffff;

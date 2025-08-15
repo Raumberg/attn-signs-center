@@ -30,6 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/assets/black-hole.png" type="image/png" />
+      </head>
       <body className={`${geistSans.variable} ${jetbrainsMono.variable} antialiased text-white`}>
         <MouseProvider>
           {children}

@@ -31,12 +31,12 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
 
   // Pastel gradient palette for regular tags (subtle opacity)
   const otherPalette = [
-    "bg-gradient-to-r from-teal-700/30 to-teal-500/30 text-teal-100/70",
-    "bg-gradient-to-r from-sky-700/30 to-sky-500/30 text-sky-100/70",
-    "bg-gradient-to-r from-violet-700/30 to-violet-500/30 text-violet-100/70",
-    "bg-gradient-to-r from-green-700/30 to-green-500/30 text-green-100/70",
-    "bg-gradient-to-r from-pink-700/30 to-pink-500/30 text-pink-100/70",
-    "bg-gradient-to-r from-indigo-700/30 to-indigo-500/30 text-indigo-100/70",
+    "border-teal-400/50 text-teal-300/80",
+    "border-sky-400/50 text-sky-300/80",
+    "border-violet-400/50 text-violet-300/80",
+    "border-green-400/50 text-green-300/80",
+    "border-pink-400/50 text-pink-300/80",
+    "border-indigo-400/50 text-indigo-300/80",
   ];
 
   const getTagClasses = (tag: string) => {
@@ -136,7 +136,7 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0 + index * 0.1, duration: 0.6 }}
-            whileHover={{ scale: 0.97 }}
+            whileHover={{ scale: 0.97, transition: { duration: 0.15 } }}
             whileTap={{ scale: 0.94 }}
           >
             <Link href={`/blog/${post.slug}`} legacyBehavior>
@@ -165,7 +165,7 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`text-xs px-2 py-1 rounded ${jetbrainsMono.className} ${getTagClasses(tag)}`}
+                      className={`text-xs px-2 py-1 rounded border ${jetbrainsMono.className} ${getTagClasses(tag)}`}
                     >
                       {renderTagLabel(tag)}
                     </span>

@@ -78,6 +78,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             const match = /language-(\w+)/.exec(className || "");
 
             return (
+              <div className="code-block">
               <SyntaxHighlighter
                 language={match ? match[1] : undefined}
                 style={oneDark}
@@ -87,6 +88,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               >
                 {String(children).replace(/\n$/, "")}
               </SyntaxHighlighter>
+              </div>
             );
           },
           
