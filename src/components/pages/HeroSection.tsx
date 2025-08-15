@@ -83,16 +83,17 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, 
             Read Blog
           </motion.a>
           </Link>
-          <motion.a
-            href="/docs"
-            className={`px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onMouseEnter={(e) => onButtonHover(e.currentTarget)}
-            onMouseLeave={onButtonLeave}
-          >
-            MyLLM Docs
-          </motion.a>
+          <Link href="/docs" legacyBehavior>
+            <motion.a
+              className={`px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onMouseEnter={(e) => onButtonHover(e.currentTarget)}
+              onMouseLeave={onButtonLeave}
+            >
+              MyLLM Docs
+            </motion.a>
+          </Link>
 
           <motion.a
             className="sm:basis-full h-0" aria-hidden="true" />

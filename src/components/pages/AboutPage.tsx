@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { JetBrains_Mono } from "next/font/google";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
+import Link from "next/link";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -192,8 +193,8 @@ export default function AboutPage() {
                transition={{ delay: 0.8, duration: 0.8 }}
                viewport={{ once: true }}
              >
+              <Link href="/" legacyBehavior>
               <motion.a
-                href="/"
                 className={`inline-block px-8 py-3 border border-white text-white hover:bg-white hover:text-black font-medium no-underline ${jetbrainsMono.className}`}
                 style={{ textDecoration: 'none' }}
                 whileHover={{ scale: 0.95, y: 2 }}
@@ -205,6 +206,7 @@ export default function AboutPage() {
               >
                 ← Home
               </motion.a>
+              </Link>
             </motion.div>
           </div>
         </section>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { JetBrains_Mono } from "next/font/google";
+import Link from "next/link";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -118,8 +119,8 @@ export default function ContactPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
         >
+          <Link href="/" legacyBehavior>
           <motion.a
-            href="/"
             className={`inline-block px-8 py-3 border border-white text-white hover:bg-white hover:text-black font-medium no-underline ${jetbrainsMono.className}`}
             style={{ textDecoration: 'none' }}
             whileHover={{ scale: 0.95, y: 2 }}
@@ -131,6 +132,7 @@ export default function ContactPage() {
           >
             ← Home
           </motion.a>
+          </Link>
         </motion.div>
       </div>
     </motion.div>
