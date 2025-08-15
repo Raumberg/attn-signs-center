@@ -11,11 +11,21 @@ import Link from "next/link";
 
 // Difficulty tag styling map
 const difficultyMap: Record<string, {bg: string; text: string; fires: number}> = {
-  easy: { bg: "bg-yellow-600", text: "text-yellow-100", fires: 1 },
-  medium: { bg: "bg-orange-600", text: "text-orange-100", fires: 3 },
-  hard: { bg: "bg-red-600", text: "text-red-100", fires: 4 },
-  extreme: { bg: "bg-red-800", text: "text-orange-100", fires: 5 },
+  easy: { bg: "bg-gradient-to-r from-yellow-600 to-yellow-500", text: "text-yellow-50", fires: 1 },
+  medium: { bg: "bg-gradient-to-r from-orange-600 to-orange-500", text: "text-orange-50", fires: 3 },
+  hard: { bg: "bg-gradient-to-r from-red-600 to-red-500", text: "text-red-50", fires: 4 },
+  extreme: { bg: "bg-gradient-to-r from-red-800 to-orange-700", text: "text-orange-50", fires: 5 },
 };
+
+// same pastel palette for non-difficulty tags
+const otherPalette = [
+  "bg-gradient-to-r from-teal-600/40 to-teal-500/40 text-teal-100/80",
+  "bg-gradient-to-r from-sky-600/40 to-sky-500/40 text-sky-100/80",
+  "bg-gradient-to-r from-violet-600/40 to-violet-500/40 text-violet-100/80",
+  "bg-gradient-to-r from-green-600/40 to-green-500/40 text-green-100/80",
+  "bg-gradient-to-r from-pink-600/40 to-pink-500/40 text-pink-100/80",
+  "bg-gradient-to-r from-indigo-600/40 to-indigo-500/40 text-indigo-100/80",
+];
 
 const getTagClasses = (tag: string) => {
   const key = tag.toLowerCase();
@@ -23,7 +33,8 @@ const getTagClasses = (tag: string) => {
     const { bg, text } = difficultyMap[key];
     return `${bg} ${text}`;
   }
-  return "bg-gray-700/40 text-gray-400";
+  const sum = [...tag].reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+  return otherPalette[sum % otherPalette.length];
 };
 
 const renderTagLabel = (tag: string) => {
@@ -143,7 +154,8 @@ export default function BlogPostPageClient({ post }: BlogPostPageClientProps) {
             <motion.a
               className={`inline-block px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}
               style={{ textDecoration: 'none' }}
-              whileHover={{ scale: 0.95, y: 2 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.94 }}
               onMouseEnter={(e) => setMagneticTargetForElement(e.currentTarget)}
               onMouseLeave={clearMagneticTarget}
               transition={{

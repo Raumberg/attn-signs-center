@@ -27,8 +27,11 @@ The advantage \(A_t\) is estimated via **GAE** using a *learned value function* 
 ## 2  Group Baseline Idea
 Sample **G** candidate responses \(\{o^{(i)}\}_{i=1}^{G}\) **for the same prompt** using the current policy. Let the scalar quality scores from a reward model be \(r^{(i)} \in \mathbb R\).  Define the *group-normalised* advantages
 \[
-\tilde A^{(i)} = \frac{r^{(i)} - \mu_{\!g}}{\sigma_{\!g}}\,, \qquad \mu_{\!g}=\frac1G\sum_{j=1}^{G} r^{(j)},\; \; \sigma_{\!g}=\text{std}(\{r^{(j)}\}). \tag{1}
+\hat A^{\text{GRPO}}_i\;=\;A^{\text{PPO}}_i \qquad (1)
 \]
+$$
+\widetilde A_i \;=\; \hat A^{\text{GRPO}}_i - \operatorname{median}_{j\in\mathcal G} \big(\hat A^{\text{GRPO}}_j\big) \tag{2}
+$$
 No critic — the baseline is **the peer average**.  Intuition: an answer is good iff it beats its siblings.
 
 We broadcast \(\tilde A^{(i)}\) to every token of \(o^{(i)}\).  Substituting into PPO gives the **GRPO objective**
