@@ -85,7 +85,6 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
             return (
               <SyntaxHighlighter
-                /* @ts-ignore */
                 language={match ? match[1] : undefined}
                 style={oneDark}
                 PreTag="div"
