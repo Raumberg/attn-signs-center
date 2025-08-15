@@ -68,8 +68,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
       tags: matterResult.data.tags || [],
       content: matterResult.content,
     };
-  } catch (error) {
-    return null; // eslint-disable-line @typescript-eslint/no-unused-vars
+  } catch {
+    return null;
   }
 }
 
