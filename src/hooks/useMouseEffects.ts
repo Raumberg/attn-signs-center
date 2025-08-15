@@ -11,18 +11,32 @@ export function useMouseEffects() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [ripples, setRipples] = useState<Ripple[]>([]);
+  const [trail, setTrail] = useState<Ripple[]>([]);
   const [magneticTarget, setMagneticTarget] = useState<{ x: number; y: number; radius: number } | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
+
+      const newPoint = {
+        id: Date.now(),
+        x: e.pageX,
+        y: e.pageY,
+        timestamp: Date.now()
+      } as Ripple;
+      setTrail(prev => [...prev, newPoint]);
+
+      // Remove point after 400ms to create fading trail
+      setTimeout(() => {
+        setTrail(prev => prev.filter(p => p.id !== newPoint.id));
+      }, 400);
     };
 
     const handleClick = (e: MouseEvent) => {
       const newRipple = {
         id: Date.now(),
-        x: e.clientX,
-        y: e.clientY,
+        x: e.pageX,
+        y: e.pageY,
         timestamp: Date.now()
       };
       setRipples(prev => [...prev, newRipple]);
@@ -79,6 +93,7 @@ export function useMouseEffects() {
     isHovering,
     setIsHovering,
     ripples,
+    trail,
     setMagneticTargetForElement,
     clearMagneticTarget,
     getMagneticPosition

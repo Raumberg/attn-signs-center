@@ -9,7 +9,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export default function Navigation() {
-  const navItems = ["About", "Research", "Blog", "Contact"];
+  const navItems = ["About", "Research", "Blog", "Docs", "Contact"];
 
   return (
     <motion.nav 
@@ -19,26 +19,34 @@ export default function Navigation() {
       transition={{ delay: 0.8, duration: 0.6 }}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <motion.div 
-          className={`text-xl font-bold ${jetbrainsMono.className}`}
+        <motion.a
+          href="/"
+          className={`text-2xl md:text-3xl font-bold no-underline text-white ${jetbrainsMono.className}`}
           whileHover={{ scale: 1.1 }}
+          style={{ textDecoration: 'none' }}
         >
           AS
-        </motion.div>
+        </motion.a>
         <div className="hidden md:flex space-x-8">
-          {navItems.map((item, index) => (
-            <motion.a
-              key={item}
-              href={item === "Contact" ? "/contact" : item === "About" ? "/about" : "#"}
-              className={`text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.className}`}
-              whileHover={{ y: -2 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-            >
-              {item}
-            </motion.a>
-          ))}
+                        {navItems.map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={
+                    item === "Contact" ? "/contact" : 
+                    item === "About" ? "/about" : 
+                    item === "Blog" ? "/blog" :
+                    item === "Research" ? "/research" :
+                    item === "Docs" ? "/docs" : "#"
+                  }
+                  className={`text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.className}`}
+                  whileHover={{ y: -2 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
+                >
+                  {item}
+                </motion.a>
+              ))}
         </div>
       </div>
     </motion.nav>

@@ -1,14 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMouse } from "@/contexts/MouseContext";
 
-interface InteractiveCursorProps {
-  mousePosition: { x: number; y: number };
-  isHovering: boolean;
-  magneticPosition: { x: number; y: number };
-}
-
-export default function InteractiveCursor({ mousePosition, isHovering, magneticPosition }: InteractiveCursorProps) {
+export default function InteractiveCursor() {
+  const { isHovering, getMagneticPosition } = useMouse();
+  const magneticPosition = getMagneticPosition();
   return (
     <>
       <motion.div

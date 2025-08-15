@@ -2,14 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { useMouse } from "@/contexts/MouseContext";
 
-interface VideoBackgroundProps {
-  mousePosition: { x: number; y: number };
-}
-
-export default function VideoBackground({ mousePosition }: VideoBackgroundProps) {
+export default function VideoBackground() {
+  const { mousePosition } = useMouse();
   const { width, height } = useWindowSize();
-
 
 
   return (

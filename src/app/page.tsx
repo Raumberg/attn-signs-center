@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { attentionPhrases } from "@/constants/phrases";
-import { useMouseEffects } from "@/hooks/useMouseEffects";
+import { useMouse } from "@/contexts/MouseContext";
+import { useRouter } from "next/navigation";
 import VideoBackground from "@/components/effects/VideoBackground";
 import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
@@ -12,32 +13,44 @@ import ScrollIndicator from "@/components/ui/ScrollIndicator";
 
 export default function Home() {
   const [randomPhrase, setRandomPhrase] = useState("");
+  const router = useRouter();
   const { 
-    mousePosition, 
-    isHovering, 
-    setIsHovering, 
-    ripples, 
-    setMagneticTargetForElement, 
-    clearMagneticTarget, 
-    getMagneticPosition 
-  } = useMouseEffects();
+    setIsHovering,
+    setMagneticTargetForElement,
+    clearMagneticTarget
+  } = useMouse();
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * attentionPhrases.length);
     setRandomPhrase(attentionPhrases[randomIndex]);
   }, []);
 
+  // Navigate to /about on wheel down gesture
+  useEffect(() => {
+    let throttled = false;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (throttled) return;
+      if (e.deltaY > 40) {
+        throttled = true;
+        router.push("/about");
+        setTimeout(() => { throttled = false; }, 1000);
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, [router]);
+
   return (
     <div className="min-h-screen text-white flex flex-col relative overflow-hidden">
-                    <VideoBackground mousePosition={mousePosition} />
+      <VideoBackground />
       
-      <RippleEffect ripples={ripples} />
+      <RippleEffect />
 
-      <InteractiveCursor 
-        mousePosition={mousePosition} 
-        isHovering={isHovering} 
-        magneticPosition={getMagneticPosition()}
-      />
+      <InteractiveCursor />
 
       <HeroSection 
         randomPhrase={randomPhrase}

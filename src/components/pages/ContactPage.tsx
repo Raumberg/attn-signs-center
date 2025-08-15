@@ -78,7 +78,7 @@ export default function ContactPage() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group p-6 rounded-lg border border-transparent hover:bg-gray-900/50 no-underline transition-transform duration-10 ${jetbrainsMono.className}`}
+              className={`group p-6 rounded-lg border border-transparent hover:bg-gray-900/50 no-underline ${jetbrainsMono.className}`}
               style={{ 
                 textDecoration: 'none',
                 borderColor: 'transparent'
@@ -89,7 +89,8 @@ export default function ContactPage() {
                 borderColor: link.borderColor === 'border-indigo-400' ? '#818cf8' : 
                              link.borderColor === 'border-gray-300' ? '#d1d5db' :
                              link.borderColor === 'border-blue-400' ? '#60a5fa' :
-                             link.borderColor === 'border-red-400' ? '#f87171' : 'transparent'
+                             link.borderColor === 'border-red-400' ? '#f87171' : 'transparent',
+                transition: { duration: 0.12 }
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
