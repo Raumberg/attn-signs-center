@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { JetBrains_Mono } from "next/font/google";
+import Link from "next/link";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -60,8 +61,8 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, 
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
+          <Link href="/research" legacyBehavior>
           <motion.a
-            href="/research"
             className={`px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -70,8 +71,9 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, 
           >
             View Research
           </motion.a>
+          </Link>
+          <Link href="/blog" legacyBehavior>
           <motion.a
-            href="/blog"
             className={`px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -80,6 +82,7 @@ export default function HeroSection({ randomPhrase, onMouseEnter, onMouseLeave, 
           >
             Read Blog
           </motion.a>
+          </Link>
           <motion.a
             href="/docs"
             className={`px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}

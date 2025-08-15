@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 
+const prefix = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function VideoBackground() {
 
 
@@ -26,7 +28,7 @@ export default function VideoBackground() {
         muted
         playsInline
       >
-        <source src="/assets/triangles.mp4" type="video/mp4" />
+        <source src={`${prefix}/assets/triangles.mp4`} type="video/mp4" />
       </video>
     </motion.div>
   );

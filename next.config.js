@@ -5,6 +5,9 @@ const nextConfig = {
   trailingSlash: true,
   basePath: '/attn-signs-center',
   assetPrefix: '/attn-signs-center',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/attn-signs-center',
+  },
 };
 
 module.exports = nextConfig;
