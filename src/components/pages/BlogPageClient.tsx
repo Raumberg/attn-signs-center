@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { JetBrains_Mono } from "next/font/google";
 import { BlogPost } from "@/lib/blog";
-import VideoBackground from "@/components/effects/VideoBackground";
+// import VideoBackground from "@/components/effects/VideoBackground";
 import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
 import Navigation from "@/components/ui/Navigation";
@@ -21,8 +21,8 @@ interface BlogPageClientProps {
 
 export default function BlogPageClient({ posts, allTags }: BlogPageClientProps) {
   return (
-    <div className="min-h-screen text-white relative overflow-hidden">
-      <VideoBackground />
+    <div className="min-h-screen text-white bg-black relative overflow-hidden">
+      {/* <VideoBackground /> */}
 
       <RippleEffect />
 

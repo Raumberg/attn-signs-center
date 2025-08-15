@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 import { JetBrains_Mono } from "next/font/google";
 import { BlogPost } from "@/lib/blog";
 import MarkdownRenderer from "@/components/ui/MarkdownRenderer";
-import VideoBackground from "@/components/effects/VideoBackground";
-import InteractiveCursor from "@/components/effects/InteractiveCursor";
-import RippleEffect from "@/components/effects/RippleEffect";
+// Removed VideoBackground & RippleEffect for distraction-free reading
 import Navigation from "@/components/ui/Navigation";
 import { useMouse } from "@/contexts/MouseContext";
 import Link from "next/link";
@@ -25,7 +23,7 @@ const getTagClasses = (tag: string) => {
     const { bg, text } = difficultyMap[key];
     return `${bg} ${text}`;
   }
-  return "bg-gray-800 text-gray-300";
+  return "bg-gray-700/40 text-gray-400";
 };
 
 const renderTagLabel = (tag: string) => {
@@ -50,13 +48,8 @@ export default function BlogPostPageClient({ post }: BlogPostPageClientProps) {
   const { setMagneticTargetForElement, clearMagneticTarget } = useMouse();
 
   return (
-    <div className="min-h-screen text-white relative overflow-hidden">
-      <VideoBackground />
+    <div className="min-h-screen text-white bg-black relative overflow-hidden">
       
-      <RippleEffect />
-
-      <InteractiveCursor />
-
       <Navigation />
 
       <div className="relative z-10 pt-32 pb-20 px-4">

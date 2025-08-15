@@ -35,7 +35,7 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
       const { bg, text } = difficultyMap[key];
       return `${bg} ${text}`;
     }
-    return "bg-gray-800 text-gray-300";
+    return "bg-gray-700/40 text-gray-400"; // subdued for non-difficulty tags
   };
 
   const renderTagLabel = (tag: string) => {
@@ -46,6 +46,10 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
     }
     return tag;
   };
+
+  const difficultyKeys = Object.keys(difficultyMap);
+  const difficultyTags = allTags.filter(t => difficultyKeys.includes(t.toLowerCase()));
+  const otherTags = allTags.filter(t => !difficultyKeys.includes(t.toLowerCase()));
 
   return (
     <>
@@ -69,7 +73,7 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
           >
             All Posts
           </motion.button>
-          {allTags.map((tag, index) => (
+          {otherTags.map((tag, index) => (
             <motion.button
               key={tag}
               onClick={() => setSelectedTag(tag)}
@@ -80,6 +84,24 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+            >
+              {renderTagLabel(tag)}
+            </motion.button>
+          ))}
+        </div>
+        {/* Difficulty row */}
+        <div className="flex flex-wrap gap-3 justify-center mt-4">
+          {difficultyTags.map((tag, index) => (
+            <motion.button
+              key={tag}
+              onClick={() => setSelectedTag(tag)}
+              className={`px-4 py-2 rounded-lg border transition-all duration-300 ${jetbrainsMono.className} ${
+                selectedTag === tag ? 'border-white' : 'border-gray-600 hover:border-white'} ${getTagClasses(tag)}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 + index * 0.1, duration: 0.6 }}
             >
               {renderTagLabel(tag)}
             </motion.button>

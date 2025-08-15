@@ -1,5 +1,3 @@
-"use client";
-
 import ReactMarkdown from 'react-markdown';
 import { JetBrains_Mono } from "next/font/google";
 import remarkMath from "remark-math";
