@@ -31,12 +31,12 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
 
   // Pastel gradient palette for regular tags (subtle opacity)
   const otherPalette = [
-    "bg-gradient-to-r from-teal-600/40 to-teal-500/40 text-teal-100/80",
-    "bg-gradient-to-r from-sky-600/40 to-sky-500/40 text-sky-100/80",
-    "bg-gradient-to-r from-violet-600/40 to-violet-500/40 text-violet-100/80",
-    "bg-gradient-to-r from-green-600/40 to-green-500/40 text-green-100/80",
-    "bg-gradient-to-r from-pink-600/40 to-pink-500/40 text-pink-100/80",
-    "bg-gradient-to-r from-indigo-600/40 to-indigo-500/40 text-indigo-100/80",
+    "bg-gradient-to-r from-teal-700/30 to-teal-500/30 text-teal-100/70",
+    "bg-gradient-to-r from-sky-700/30 to-sky-500/30 text-sky-100/70",
+    "bg-gradient-to-r from-violet-700/30 to-violet-500/30 text-violet-100/70",
+    "bg-gradient-to-r from-green-700/30 to-green-500/30 text-green-100/70",
+    "bg-gradient-to-r from-pink-700/30 to-pink-500/30 text-pink-100/70",
+    "bg-gradient-to-r from-indigo-700/30 to-indigo-500/30 text-indigo-100/70",
   ];
 
   const getTagClasses = (tag: string) => {
@@ -136,8 +136,8 @@ export default function BlogContent({ posts, allTags }: BlogContentProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0 + index * 0.1, duration: 0.6 }}
-            whileHover={{ y: -4, scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 0.97 }}
+            whileTap={{ scale: 0.94 }}
           >
             <Link href={`/blog/${post.slug}`} legacyBehavior>
               <motion.a

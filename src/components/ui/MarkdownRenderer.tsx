@@ -1,7 +1,5 @@
 import ReactMarkdown from 'react-markdown';
 import { JetBrains_Mono } from "next/font/google";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -18,8 +16,6 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
     <div className={`prose prose-invert prose-lg max-w-none ${jetbrainsMono.className}`}>
       <ReactMarkdown
-        remarkPlugins={[remarkMath]}
-        rehypePlugins={[rehypeKatex]}
         components={{
           // Custom heading styles
           h1: ({ children }) => (
@@ -87,7 +83,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 style={oneDark}
                 PreTag="div"
                 showLineNumbers={false}
-                customStyle={{ background: "#0f172a", padding: "1rem", borderRadius: "0.5rem", overflowX: "auto" }}
+                customStyle={{ background: "#000000", padding: "1rem", borderRadius: "0.5rem", overflowX: "auto" }}
               >
                 {String(children).replace(/\n$/, "")}
               </SyntaxHighlighter>

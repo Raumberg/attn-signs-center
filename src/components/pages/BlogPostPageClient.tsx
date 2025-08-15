@@ -19,12 +19,12 @@ const difficultyMap: Record<string, {bg: string; text: string; fires: number}> =
 
 // same pastel palette for non-difficulty tags
 const otherPalette = [
-  "bg-gradient-to-r from-teal-600/40 to-teal-500/40 text-teal-100/80",
-  "bg-gradient-to-r from-sky-600/40 to-sky-500/40 text-sky-100/80",
-  "bg-gradient-to-r from-violet-600/40 to-violet-500/40 text-violet-100/80",
-  "bg-gradient-to-r from-green-600/40 to-green-500/40 text-green-100/80",
-  "bg-gradient-to-r from-pink-600/40 to-pink-500/40 text-pink-100/80",
-  "bg-gradient-to-r from-indigo-600/40 to-indigo-500/40 text-indigo-100/80",
+  "bg-gradient-to-r from-teal-700/30 to-teal-500/30 text-teal-100/70",
+  "bg-gradient-to-r from-sky-700/30 to-sky-500/30 text-sky-100/70",
+  "bg-gradient-to-r from-violet-700/30 to-violet-500/30 text-violet-100/70",
+  "bg-gradient-to-r from-green-700/30 to-green-500/30 text-green-100/70",
+  "bg-gradient-to-r from-pink-700/30 to-pink-500/30 text-pink-100/70",
+  "bg-gradient-to-r from-indigo-700/30 to-indigo-500/30 text-indigo-100/70",
 ];
 
 const getTagClasses = (tag: string) => {
@@ -154,8 +154,8 @@ export default function BlogPostPageClient({ post }: BlogPostPageClientProps) {
             <motion.a
               className={`inline-block px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}
               style={{ textDecoration: 'none' }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.94 }}
+              whileHover={{ scale: 0.97 }}
+              whileTap={{ scale: 0.93 }}
               onMouseEnter={(e) => setMagneticTargetForElement(e.currentTarget)}
               onMouseLeave={clearMagneticTarget}
               transition={{
