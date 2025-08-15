@@ -16,6 +16,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Attention Signs - LLM Research & Blog",
   description: "Personal website and blog about deep learning and LLM research by Attention Signs",
+  icons: {
+    icon: "/assets/black-hole.png",
+    shortcut: "/assets/black-hole.png",
+    apple: "/assets/black-hole.png",
+  },
 };
 
 export default function RootLayout({
