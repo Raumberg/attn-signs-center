@@ -1,9 +1,9 @@
 ---
 title: "Understanding Attention Mechanisms in Deep Learning"
-date: "2024-01-15"
+date: "2025-08-15"
 author: "Attention Signs"
 excerpt: "A comprehensive guide to attention mechanisms and their role in modern neural networks"
-tags: ["attention", "deep-learning", "transformers", "neural-networks"]
+tags: ["attention", "deep-learning", "transformers", "neural-networks", "easy"]
 ---
 
 # Understanding Attention Mechanisms in Deep Learning
@@ -64,6 +64,45 @@ def attention(query, key, value, mask=None):
     output = torch.matmul(attention_weights, value)
     
     return output, attention_weights
+```
+
+Or, we can go with torch class:
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class SelfAttentionLayer(nn.Module):
+    def __init__(self, hidden_dim: int, qkv_bias: float):
+        super(SelfAttentionLayer, self).__init__()
+        self.hidden_dim = hidden_dim
+
+        # Linear transformations for Q, K, V from the same source
+        self.K_proj = nn.Linear(hidden_dim, hidden_dim, bias=qkv_bias)
+        self.Q_proj = nn.Linear(hidden_dim, hidden_dim, bias=qkv_bias)
+        self.V_proj = nn.Linear(hidden_dim, hidden_dim, bias=qkv_bias)
+
+    def forward(self, x: torch.Tensor, mask = None):
+        # Apply linear transformations
+        keys = self.K_proj(x)
+        queries = self.Q_proj(x)
+        values = self.V_proj(x)
+
+        # Scaled dot-product attention
+        # We use bmm (batch matmul) to skip batch dimension
+        scores = torch.bmm(queries, keys.transpose(1, 2)) / torch.sqrt(self.hidden_dim)
+
+        # Apply mask (if provided) if we use CausalLM modelling 
+        if mask is not None:
+            scores = scores.masked_fill_(mask.view(scores.size()), float(-inf))
+
+        # Apply softmax
+        attn = F.softmax(scores, dim=-1)
+
+        # Multiply weights with values
+        weights = torch.bmm(attn, values)
+
+        return weights
 ```
 
 ## Applications

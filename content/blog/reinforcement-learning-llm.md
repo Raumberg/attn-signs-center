@@ -1,9 +1,9 @@
 ---
 title: "Reinforcement Learning for Language Models: From PPO to DPO"
-date: "2024-01-20"
+date: "2025-08-15"
 author: "Attention Signs"
 excerpt: "Exploring how reinforcement learning techniques are used to align language models with human preferences"
-tags: ["reinforcement-learning", "llm", "ppo", "dpo", "alignment"]
+tags: ["reinforcement-learning", "llm", "ppo", "dpo", "alignment", "easy"]
 ---
 
 # Reinforcement Learning for Language Models: From PPO to DPO
@@ -23,7 +23,7 @@ PPO is one of the most popular RL algorithms for LLM alignment. It's used in mod
 1. **Policy Network**: The language model itself
 2. **Value Network**: Estimates the expected reward
 3. **Reward Model**: Trained on human preference data
-4. **KL Penalty**: Prevents the policy from deviating too far from the original model
+4. **KL Penalty**: Prevents the policy from deviating too far from the original model using KL Divergence loss
 
 ### PPO Algorithm
 

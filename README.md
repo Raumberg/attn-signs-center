@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Attention Signs Center — Next.js 15 ⚡️
 
-## Getting Started
+**ASC** is a fully static (GitHub Pages-friendly) portfolio & blog built with Next 15 and React 19. It mixes motion-driven UI, a Markdown blog with syntax highlighting, and slick Framer Motion effects. Fully vibed using cursor with o3 / Gemini 2.5 Pro bcs I know absolutely nothing about frontend! :)
 
-First, run the development server:
+## ✨ Features
+
+* **Next.js App Router** – all routes live inside `src/app`.
+* **Tailwind CSS v4** – painless styling.
+* **Framer Motion** – smooth entrances, parallax and a magnetic cursor.
+* **Video backgrounds** – the `VideoBackground` component.
+* **Markdown blog** – posts sit in `content/blog/*.md`.
+* **Difficulty tags** – `easy 🔥`, `medium 🔥🔥🔥`, `hard 🔥🔥🔥🔥`, `extreme 🔥🔥🔥🔥🔥` (auto-colored + emoji).
+* **Code highlighting** – powered by `react-syntax-highlighter` (One Dark theme).
+* **100 % static export** – perfect for GitHub Pages deployments.
+
+## 🚀 Local Development
 
 ```bash
+# install dependencies
+npm i
+
+# start the dev server at http://localhost:3000
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| npm script | purpose |
+|------------|---------|
+| `dev`      | development mode |
+| `build`    | production build (Next.js) |
+| `start`    | run production server |
+| `build:gh` | static export for GitHub Pages |
+| `lint`     | run ESLint |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Deploy to GitHub Pages
 
-## Learn More
+```bash
+npm run build:gh
+# produces .next/static + out/  → push to the gh-pages branch
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 Adding a Post
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a file `content/blog/my-post.md`.
+2. Add front-matter:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```md
+---
+title: "My Brilliant Title"
+date: "2025-08-16"
+author: "Attention Signs"
+excerpt: "Short card description"
+tags: ["deep-learning", "attention", "medium"]
+---
 
-## Deploy on Vercel
+# Heading
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Run `npm run dev` – the post appears instantly.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+MIT © Attention Signs 2025

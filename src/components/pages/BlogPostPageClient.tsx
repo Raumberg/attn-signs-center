@@ -9,6 +9,33 @@ import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
 import Navigation from "@/components/ui/Navigation";
 import { useMouse } from "@/contexts/MouseContext";
+import Link from "next/link";
+
+// Difficulty tag styling map
+const difficultyMap: Record<string, {bg: string; text: string; fires: number}> = {
+  easy: { bg: "bg-yellow-600", text: "text-yellow-100", fires: 1 },
+  medium: { bg: "bg-orange-600", text: "text-orange-100", fires: 3 },
+  hard: { bg: "bg-red-600", text: "text-red-100", fires: 4 },
+  extreme: { bg: "bg-red-800", text: "text-orange-100", fires: 5 },
+};
+
+const getTagClasses = (tag: string) => {
+  const key = tag.toLowerCase();
+  if (difficultyMap[key]) {
+    const { bg, text } = difficultyMap[key];
+    return `${bg} ${text}`;
+  }
+  return "bg-gray-800 text-gray-300";
+};
+
+const renderTagLabel = (tag: string) => {
+  const key = tag.toLowerCase();
+  if (difficultyMap[key]) {
+    const { fires } = difficultyMap[key];
+    return `${tag} (${"🔥".repeat(fires)})`;
+  }
+  return tag;
+};
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -93,9 +120,9 @@ export default function BlogPostPageClient({ post }: BlogPostPageClientProps) {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className={`text-sm px-3 py-1 bg-gray-800 text-gray-300 rounded-full ${jetbrainsMono.className}`}
+                    className={`text-sm px-3 py-1 rounded-full ${jetbrainsMono.className} ${getTagClasses(tag)}`}
                   >
-                    {tag}
+                    {renderTagLabel(tag)}
                   </span>
                 ))}
               </motion.div>
@@ -119,8 +146,8 @@ export default function BlogPostPageClient({ post }: BlogPostPageClientProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4, duration: 0.8 }}
           >
+            <Link href="/blog" legacyBehavior>
             <motion.a
-              href="/blog"
               className={`inline-block px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 font-medium no-underline ${jetbrainsMono.className}`}
               style={{ textDecoration: 'none' }}
               whileHover={{ scale: 0.95, y: 2 }}
@@ -134,6 +161,7 @@ export default function BlogPostPageClient({ post }: BlogPostPageClientProps) {
             >
               ← Back to Blog
             </motion.a>
+            </Link>
           </motion.div>
         </div>
       </div>

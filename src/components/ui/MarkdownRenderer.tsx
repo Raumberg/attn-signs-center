@@ -2,6 +2,10 @@
 
 import ReactMarkdown from 'react-markdown';
 import { JetBrains_Mono } from "next/font/google";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -16,6 +20,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
     <div className={`prose prose-invert prose-lg max-w-none ${jetbrainsMono.className}`}>
       <ReactMarkdown
+        remarkPlugins={[remarkMath]}
+        rehypePlugins={[rehypeKatex]}
         components={{
           // Custom heading styles
           h1: ({ children }) => (
@@ -63,9 +69,10 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             </li>
           ),
           
-          // Custom code block styles
+          // Code & syntax highlighting
           code: ({ children, className }) => {
             const isInline = !className;
+
             if (isInline) {
               return (
                 <code className="bg-gray-800 text-green-400 px-1 py-0.5 rounded text-sm">
@@ -73,17 +80,22 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 </code>
               );
             }
+
+            const match = /language-(\w+)/.exec(className || "");
+
             return (
-              <code className={`${className} block bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm`}>
-                {children}
-              </code>
+              <SyntaxHighlighter
+                /* @ts-ignore */
+                language={match ? match[1] : undefined}
+                style={oneDark}
+                PreTag="div"
+                showLineNumbers={false}
+                customStyle={{ background: "#0f172a", padding: "1rem", borderRadius: "0.5rem", overflowX: "auto" }}
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
             );
           },
-          pre: ({ children }) => (
-            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto mb-4 border border-gray-700">
-              {children}
-            </pre>
-          ),
           
           // Custom blockquote styles
           blockquote: ({ children }) => (
