@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import DocsPageClient from "@/components/pages/DocsPageClient";
 import VideoBackground from "@/components/effects/VideoBackground";
-import InteractiveCursor from "@/components/effects/InteractiveCursor";
+// import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
 import Navigation from "@/components/ui/Navigation";
 import { useMouse } from "@/contexts/MouseContext";
@@ -37,7 +37,7 @@ export default function Docs() {
     <div className="min-h-screen text-white relative overflow-hidden">
       <VideoBackground />
       <RippleEffect />
-      <InteractiveCursor />
+      {/* <InteractiveCursor /> */}
       <Navigation />
       <DocsPageClient 
         markdown={markdown} 

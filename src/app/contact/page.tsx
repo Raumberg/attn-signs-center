@@ -2,7 +2,7 @@
 
 import ContactPage from "@/components/pages/ContactPage";
 import VideoBackground from "@/components/effects/VideoBackground";
-import InteractiveCursor from "@/components/effects/InteractiveCursor";
+// import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
 import Navigation from "@/components/ui/Navigation";
 import { useMouse } from "@/contexts/MouseContext";
@@ -16,7 +16,7 @@ export default function Contact() {
 
       <RippleEffect />
 
-      <InteractiveCursor />
+      {/* <InteractiveCursor /> */}
 
       <Navigation />
 

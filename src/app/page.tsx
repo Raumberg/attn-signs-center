@@ -5,7 +5,7 @@ import { attentionPhrases } from "@/constants/phrases";
 import { useMouse } from "@/contexts/MouseContext";
 import { useRouter } from "next/navigation";
 import VideoBackground from "@/components/effects/VideoBackground";
-import InteractiveCursor from "@/components/effects/InteractiveCursor";
+// import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
 import Navigation from "@/components/ui/Navigation";
 import HeroSection from "@/components/pages/HeroSection";
@@ -50,7 +50,7 @@ export default function Home() {
       
       <RippleEffect />
 
-      <InteractiveCursor />
+      {/* <InteractiveCursor /> */}
 
       <HeroSection 
         randomPhrase={randomPhrase}

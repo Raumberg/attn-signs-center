@@ -1,7 +1,7 @@
 "use client";
 
 import VideoBackground from "@/components/effects/VideoBackground";
-import InteractiveCursor from "@/components/effects/InteractiveCursor";
+// import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
 import Navigation from "@/components/ui/Navigation";
 import { JetBrains_Mono } from "next/font/google";
@@ -13,7 +13,7 @@ export default function Research() {
     <div className="min-h-screen text-white relative overflow-hidden">
       <VideoBackground />
       <RippleEffect />
-      <InteractiveCursor />
+      {/* <InteractiveCursor /> */}
       <Navigation />
       <div className="relative z-10 pt-32 pb-20 px-4 text-center max-w-3xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Research Hub</h1>
