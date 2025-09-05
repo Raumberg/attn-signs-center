@@ -16,7 +16,8 @@ export default function Docs() {
 
   useEffect(() => {
     // Load markdown content based on current section
-    fetch(`/content/docs/${currentSection}.md`)
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    fetch(`${basePath}/content/docs/${currentSection}.md`)
       .then(res => res.text())
       .then(setMarkdown)
       .catch(() => setMarkdown(`# Loading error\nFailed to load ${currentSection} documentation.`));

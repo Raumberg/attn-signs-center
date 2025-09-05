@@ -2,6 +2,8 @@
 
 **ASC** is a fully static (GitHub Pages-friendly) portfolio & blog built with Next 15 and React 19. It mixes motion-driven UI, a Markdown blog with syntax highlighting, and slick Framer Motion effects. Fully vibed using cursor with o3 / Gemini 2.5 Pro bcs I know absolutely nothing about frontend! :)
 
+> Note: for now, every post in blog is written by an LLM just to work with formatting, I will rewrite everything after it is ready by myself, please, don't rely on blog posts for now!
+
 ## ✨ Features
 
 * **Next.js App Router** – all routes live inside `src/app`.
