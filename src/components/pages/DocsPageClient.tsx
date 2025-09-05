@@ -63,7 +63,7 @@ const DocsPageClient = memo(function DocsPageClient({ markdown, navItems, curren
             components={{
               // Render fenced code blocks with SyntaxHighlighter
               pre({ children }) {
-                const child = Array.isArray(children) ? (children[0] as any) : (children as any);
+                const child = Array.isArray(children) ? children[0] : children;
                 if (!child || typeof child !== "object") return <pre>{children}</pre>;
 
                 const className: string = child.props?.className || "";
@@ -94,8 +94,7 @@ const DocsPageClient = memo(function DocsPageClient({ markdown, navItems, curren
                   </div>
                 );
               },
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              code({ inline, children }: any) {
+              code({ inline, children }: { inline?: boolean; children: React.ReactNode }) {
                 if (inline) {
                   return <code className="bg-gray-800 text-green-400 px-1 rounded text-sm">{children}</code>;
                 }
