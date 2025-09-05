@@ -94,7 +94,8 @@ const DocsPageClient = memo(function DocsPageClient({ markdown, navItems, curren
                   </div>
                 );
               },
-              code({ inline, children }: { inline?: boolean; children: React.ReactNode }) {
+              code(props: any) {
+                const { inline, children } = props;
                 if (inline) {
                   return <code className="bg-gray-800 text-green-400 px-1 rounded text-sm">{children}</code>;
                 }
