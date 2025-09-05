@@ -15,9 +15,16 @@ export function useMouseEffects() {
   const [magneticTarget, setMagneticTarget] = useState<{ x: number; y: number; radius: number } | null>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    let frame: number | null = null;
 
+    const handleMouseMove = (e: MouseEvent) => {
+      if (frame) return;
+      // Throttle updates to one per animation frame (~60fps) to avoid jitter, especially noticeable on Windows
+      frame = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+        frame = null;
+      });
+      
       const newPoint = {
         id: Date.now(),
         x: e.pageX,

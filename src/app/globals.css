@@ -4,6 +4,18 @@
   background: transparent;
 }
 
+/* Fix SyntaxHighlighter selection issue */
+.code-block pre *::selection,
+.code-block code *::selection,
+.code-block span::selection {
+  background: transparent !important;
+}
+
+/* Override any default selection from react-syntax-highlighter */
+.code-block .token::selection {
+  background: transparent !important;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

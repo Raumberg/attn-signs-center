@@ -1,7 +1,8 @@
+import React, { memo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { JetBrains_Mono } from "next/font/google";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ interface MarkdownRendererProps {
   content: string;
 }
 
-export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
+const MarkdownRenderer = memo(function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
     <div className={`prose prose-invert prose-lg max-w-none ${jetbrainsMono.className}`}>
       <ReactMarkdown
@@ -79,15 +80,27 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
             return (
               <div className="code-block">
-              <SyntaxHighlighter
-                language={match ? match[1] : undefined}
-                style={oneDark}
-                PreTag="div"
-                showLineNumbers={false}
-                customStyle={{ background: "#000000", padding: "1rem", borderRadius: "0.5rem", overflowX: "auto" }}
-              >
-                {String(children).replace(/\n$/, "")}
-              </SyntaxHighlighter>
+                <SyntaxHighlighter
+                  language={match ? match[1] : undefined}
+                  style={vscDarkPlus}
+                  PreTag="div"
+                  showLineNumbers={false}
+                  customStyle={{ 
+                    background: "#000000", 
+                    padding: "1rem", 
+                    borderRadius: "0.5rem", 
+                    overflowX: "auto",
+                    color: "#ffffff"
+                  }}
+                  codeTagProps={{
+                    style: { 
+                      background: "transparent",
+                      color: "inherit"
+                    }
+                  }}
+                >
+                  {String(children).replace(/\n$/, "")}
+                </SyntaxHighlighter>
               </div>
             );
           },
@@ -147,4 +160,6 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       </ReactMarkdown>
     </div>
   );
-} 
+});
+
+export default MarkdownRenderer; 

@@ -3,10 +3,10 @@ const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
   trailingSlash: true,
-  basePath: '/attn-signs-center',
-  assetPrefix: '/attn-signs-center',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/attn-signs-center',
+    NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH || '',
   },
 };
 
