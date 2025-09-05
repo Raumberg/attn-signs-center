@@ -8,7 +8,7 @@ MyLLM library utilizes `trl` and `transformers` under the hood, so almost all tr
 ## PPO (Proximal Policy Optimization)
 `--algo ppo`, Trainer = `trl.PPOTrainer`
 
-## GRPO (Generalized RPO)
+## GRPO (Group Relative Policy Optimization)
 `--algo grpo`, Trainer = `trl.GRPOTrainer`
 
 ## Distillation
