@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { JetBrains_Mono } from "next/font/google";
 import { BlogPost } from "@/lib/blog";
 // import VideoBackground from "@/components/effects/VideoBackground";
-import InteractiveCursor from "@/components/effects/InteractiveCursor";
+// import InteractiveCursor from "@/components/effects/InteractiveCursor";
 import RippleEffect from "@/components/effects/RippleEffect";
 import Navigation from "@/components/ui/Navigation";
 import BlogContent from "./BlogContent";
@@ -26,7 +26,7 @@ export default function BlogPageClient({ posts, allTags }: BlogPageClientProps) 
 
       <RippleEffect />
 
-      <InteractiveCursor />
+      {/* <InteractiveCursor /> */}
 
       <Navigation />
 
