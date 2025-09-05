@@ -94,6 +94,7 @@ const DocsPageClient = memo(function DocsPageClient({ markdown, navItems, curren
                   </div>
                 );
               },
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               code(props: any) {
                 const { inline, children } = props;
                 if (inline) {
